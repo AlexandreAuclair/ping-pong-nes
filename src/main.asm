@@ -473,12 +473,12 @@ NoSpriteLoop:
 
 ReadController1:
   LDA #$01
-  STA JoyP1
+  STA JOY1
   LDA #$00
-  STA JoyP1
+  STA JOY1
   LDX #$08
 ReadController1Loop:
-  LDA JoyP1
+  LDA JOY1
   LSR A
   ROL buttons1
   DEX
@@ -487,12 +487,12 @@ ReadController1Loop:
 
 ReadController2:
   LDA #$01
-  STA JoyP2
+  STA JOY2_FRAME
   LDA #$00
-  STA JoyP2
+  STA JOY2_FRAME
   LDX #$08
 ReadController2Loop:
-  LDA JoyP2
+  LDA JOY2_FRAME
   LSR A
   ROL buttons2
   DEX
