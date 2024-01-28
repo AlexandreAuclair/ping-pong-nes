@@ -545,7 +545,7 @@ UpdateSprites:
 
 play_noteCs4:
     LDA #$8F    ;Duty 02, Volume F
-    STA SQ1_ENV
+    STA SQ1_VOL
     LDA #$08    ;Set Negate flag so low notes aren't silenced
     STA SQ1_SWEEP
     
@@ -560,7 +560,7 @@ play_noteCs4:
 
 play_noteC4:
     LDA #$8F    ;Duty 02, Volume F
-    STA SQ1_ENV
+    STA SQ1_VOL
     LDA #$08    ;Set Negate flag so low notes aren't silenced
     STA SQ1_SWEEP
     
@@ -575,7 +575,7 @@ play_noteC4:
 
 play_noteGs2:
     LDA #$8F    ;Duty 02, Volume F
-    STA SQ1_ENV
+    STA SQ1_VOL
     LDA #$08    ;Set Negate flag so low notes aren't silenced
     STA SQ1_SWEEP
     
@@ -671,9 +671,9 @@ LoadBackgroundJeu:
   LDA #$00
   STA PPU_ADDRESS       ; write the low byte of $2000 address
 
-  LDA backgroundAddrLo
+  LDA #<BackgroundJeu
   STA pointerLo         ; put the low byte of the address of background into pointer
-  LDA backgroundAddrHi
+  LDA #>BackgroundJeu
   STA pointerHi         ; put the high byte of the address into pointer
   
   LDX #$00              ; start at pointer + 0
@@ -703,11 +703,6 @@ InsideLoop:
 PaletteData:
   .BYTE $0F,$30,$30,$30,  $0F,$30,$30,$30,  $0F,$30,$30,$30,  $0F,$30,$30,$30   ;;background palette
   .BYTE $0F,$30,$30,$30,  $0F,$30,$30,$30,  $0F,$30,$30,$30,  $0F,$30,$30,$30   ;;sprite palette
-
-backgroundAddrLo:
-  .BYTE <BackgroundJeu
-backgroundAddrHi:
-  .BYTE >BackgroundJeu
 
 Background1:
   .BYTE $00,$00,$00,$00,$00,$00,$00,$00, $00,$00,$00,$00,$00,$00,$00,$00
